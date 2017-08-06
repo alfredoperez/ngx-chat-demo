@@ -1,0 +1,28 @@
+$height__chat-header: 150px;
+$height__chat-toolbar: 64px;
+$height__chat-container: calc(100% - #{$height__chat-header - $height__chat-toolbar});
+
+.chat-contacts-container {
+  height: calc(100% - #{$height__chat-toolbar});
+
+  .chat-contacts {
+    padding-top: 0;
+
+    .chat-contact {
+      position: relative;
+      cursor: pointer;
+      transition: background .1s linear;
+
+      &:hover {
+        background: #EEE;
+      }
+
+      .name {
+      }
+
+      .last-message {
+        color: #888;
+      }
+    }
+  }
+}

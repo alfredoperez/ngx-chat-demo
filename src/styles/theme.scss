@@ -1,0 +1,19 @@
+//@import '~normalize.css/normalize';
+//@import '~@angular/material/theming';
+//@include mat-core();
+//
+//$primary: mat-palette($mat-blue-grey, A400, A100, A700);
+//$accent: mat-palette($mat-grey, A200, A100, A400);
+//$warn: mat-palette($mat-red);
+//$theme: mat-light-theme($primary, $accent, $warn);
+//@include angular-material-theme($theme);
+//
+//.m2app-dark {
+//  $dark-primary: mat-palette($mat-pink, 700, 500, 900);
+//  $dark-accent:  mat-palette($mat-blue-grey, A200, A100, A400);
+//  $dark-warn:    mat-palette($mat-deep-orange);
+//
+//  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+//
+//  @include angular-material-theme($dark-theme);
+//}

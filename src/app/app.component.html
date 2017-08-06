@@ -1,0 +1,43 @@
+<md-toolbar class="main-toolbar mat-elevation-z2">
+
+  <button md-button class="logo-button">
+    Alive 2
+  </button>
+  <span fxFlex></span>
+
+  <button class="user-button" md-button [mdMenuTriggerFor]="menu">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <img src="assets/images/noavatar.png" class="avatar-flex"/>
+      <span fxHide="true" fxHide.gt-sm="false" style="font-weight: 500; margin-left: 5px;">USER</span>
+      <md-icon fxHide="true" fxHide.gt-sm="false">keyboard_arrow_down</md-icon>
+    </div>
+  </button>
+
+
+  <md-menu class="user-menu" x-position="before" y-position="below" #menu="mdMenu">
+    <button md-menu-item>
+      <md-icon>account_circle</md-icon>
+      <span>Profile</span>
+    </button>
+    <button md-menu-item [routerLink]="['/settings']">
+      <md-icon>settings</md-icon>
+      <span>Settings</span>
+    </button>
+    <md-divider></md-divider>
+
+    <button md-menu-item>
+      <md-icon>help</md-icon>
+      <span>Help</span>
+    </button>
+    <button [routerLink]="['/login']" md-menu-item>
+      <md-icon>exit_to_app</md-icon>
+      <span>Logout</span>
+    </button>
+  </md-menu>
+</md-toolbar>
+
+<div class="main-container" #scrollContainer>
+  <router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>
+</div>
+
+

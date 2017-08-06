@@ -1,0 +1,14 @@
+.chat-contacts-container {
+  height: calc(100% - 64px); }
+  .chat-contacts-container .chat-contacts {
+    padding-top: 0; }
+    .chat-contacts-container .chat-contacts .chat-contact {
+      position: relative;
+      cursor: pointer;
+      transition: background .1s linear; }
+      .chat-contacts-container .chat-contacts .chat-contact:hover {
+        background: #EEE; }
+      .chat-contacts-container .chat-contacts .chat-contact .last-message {
+        color: #888; }
+
+/*# sourceMappingURL=contacts.component.css.map */
