@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 import { PerfectScrollbarComponent } from 'angular2-perfect-scrollbar';
 import { DataContextService } from '../../core/data/services/datacontext.service';
+import { BotFrameworkService } from '../../core/data/services/bot-framework.service';
 
 @Component({
   selector: 'app-chat',
@@ -19,7 +20,7 @@ export class ChatComponent implements OnInit {
   @ViewChild('chatScroll')
   private chatScroll: PerfectScrollbarComponent;
 
-  constructor(private datacontext: DataContextService) {
+  constructor(private datacontext: DataContextService, private bot: BotFrameworkService) {
   }
 
   ngOnInit() {
@@ -28,6 +29,7 @@ export class ChatComponent implements OnInit {
     setTimeout(() => {
       this.chatScroll.elementRef.nativeElement.scrollTop = this.chatScroll.elementRef.nativeElement.scrollHeight;
     }, 0);
+    this.bot.initiateConversation();
 
   }
 
@@ -36,41 +38,11 @@ export class ChatComponent implements OnInit {
   }
 
   send() {
-    var message = {
-      'type': 'message',
-      'text': 'test',
-      'from': {
-        'id': 'default-user',
-        'name': 'User'
-      },
-      'locale': 'en-US',
-      'textFormat': 'plain',
-      'timestamp': '2017-08-06T17:02:14.349Z',
-      'channelData': {
-        'clientActivityId': '1502038929891.8405857785802144.0'
-      },
-      'entities': [
-        {
-          'type': 'ClientCapabilities',
-          'requiresBotState': true,
-          'supportsTts': true,
-          'supportsListening': true
-        }
-      ],
-      'id': 'l04hnn8m2lmd',
-      'channelId': 'emulator',
-      'localTimestamp': '2017-08-06T12:02:14-05:00',
-      'recipient': {
-        'id': '1bec005f03e9l',
-        'name': 'Bot'
-      },
-      'conversation': {
-        'id': '8kf9bgm4hbmj'
-      },
-      'serviceUrl': 'http://localhost:51714'
-    };
-    this.datacontext.bot.post(message)
+    this.bot.postMessage(this.newMessage)
       .subscribe(console.log);
+
+    // this.datacontext.bot.post(message)
+    //   .subscribe(console.log);
     if ( this.newMessage ) {
       this.chats[0].messages.push({
         message: this.newMessage,
