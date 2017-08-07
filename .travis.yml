@@ -32,7 +32,6 @@ before_install:
 install:
   - yarn install
 script:
-  - ng test --watch false
   - npm run build
 
 after_success:
