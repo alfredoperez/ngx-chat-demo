@@ -70,10 +70,8 @@
 
           <div class="chat-respond" fxLayout="row" fxLayoutAlign="start center">
             <md-input-container fxFlex>
-              <textarea mdInput (keyup.enter)="send()"
-                        [(ngModel)]="newMessage">
-
-              </textarea>
+              <input mdInput (keyup.enter)="send()"
+                     [(ngModel)]="newMessage"/>
             </md-input-container>
             <button (click)="send()" md-fab color="primary">
               <md-icon>send</md-icon>

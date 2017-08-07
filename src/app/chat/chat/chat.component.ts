@@ -51,24 +51,24 @@ export class ChatComponent implements OnInit {
   setActiveChat(target) {
     this.activeBot = target;
     this.initializeConversation();
-    console.log('c');
   }
 
   send() {
     this.botService.postMessage(this.newMessage, this.activeBot)
-      .subscribe();
-
-    this.botService.getMessages(this.activeBot)
-      .map(result => {
-        this.activeBot.messages = [];
-        _.each(result.messages, (msg: any) => {
-          const item = new Message();
-          item.when = moment(msg.created).format('LTS');
-          item.message = msg.text;
-          item.who = msg.from === 'ngx-demo-chat' ? 'me' : 'partner';
-          this.activeBot.messages.push(item);
-        });
-      }).subscribe();
+      .subscribe(() => {
+        this.newMessage = '';
+        this.botService.getMessages(this.activeBot)
+          .map(result => {
+            this.activeBot.messages = [];
+            _.each(result.messages, (msg: any) => {
+              const item = new Message();
+              item.when = moment(msg.created).format('LTS');
+              item.message = msg.text;
+              item.who = msg.from === 'ngx-demo-chat' ? 'me' : 'partner';
+              this.activeBot.messages.push(item);
+            });
+          }).subscribe();
+      });
 
   }
 
