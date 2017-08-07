@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { chatDemoData } from '../chat.demo';
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { PerfectScrollbarComponent } from 'angular2-perfect-scrollbar';
-import { DataContextService } from '../../core/data/services/datacontext.service';
 import { BotFrameworkService } from '../../core/data/services/bot-framework.service';
+import { Bot, Message } from '../../core/data/models/bot.model';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-chat',
@@ -13,45 +12,64 @@ import { BotFrameworkService } from '../../core/data/services/bot-framework.serv
 })
 export class ChatComponent implements OnInit {
 
-  chats: any[];
-  activeChat: any;
+  bots: Bot[];
+  activeBot: Bot;
   newMessage: string;
+  messages$: Observable<any>;
 
-  @ViewChild('chatScroll')
-  private chatScroll: PerfectScrollbarComponent;
-
-  constructor(private datacontext: DataContextService, private bot: BotFrameworkService) {
+  constructor(private botService: BotFrameworkService) {
   }
 
   ngOnInit() {
-    this.chats = _.sortBy(chatDemoData, 'lastMessageTime').reverse();
-    this.activeChat = this.chats[0];
-    setTimeout(() => {
-      this.chatScroll.elementRef.nativeElement.scrollTop = this.chatScroll.elementRef.nativeElement.scrollHeight;
-    }, 0);
-    this.bot.initiateConversation();
+    this.bots = _.sortBy(this.getBots(), 'name');
+    this.activeBot = this.bots[0];
 
+    this.initializeConversation();
   }
 
-  setActiveChat(chat) {
-    this.activeChat = chat;
+  initializeConversation() {
+    this.botService.initiateConversation(this.activeBot);
+  }
+
+  getBots(): Bot[] {
+    return [
+      {
+        name: 'First Bot',
+        picture: 'assets/img/avatars/13.png',
+        apiKey: 'LobxRJN3qvA.cwA.Msw.FaBIzPuM5yUlkKjVJYDjBnLJfYQD74FBst_Aqmd-E5Q',
+        messages: []
+      } as Bot,
+      {
+        name: 'QnA Bot',
+        picture: 'assets/img/avatars/2.png',
+        apiKey: 'mfibrSyD9Rg.cwA.84g.5GNhdsXzIBD9OEjmjBFo76K2TFftBRH9qnqrvImGYIY', messages: []
+      } as Bot
+
+    ];
+  }
+
+  setActiveChat(target) {
+    this.activeBot = target;
+    this.initializeConversation();
+    console.log('c');
   }
 
   send() {
-    this.bot.postMessage(this.newMessage)
-      .subscribe(console.log);
+    this.botService.postMessage(this.newMessage, this.activeBot)
+      .subscribe();
 
-    // this.datacontext.bot.post(message)
-    //   .subscribe(console.log);
-    if ( this.newMessage ) {
-      this.chats[0].messages.push({
-        message: this.newMessage,
-        when: moment(),
-        who: 'me'
-      });
+    this.botService.getMessages(this.activeBot)
+      .map(result => {
+        this.activeBot.messages = [];
+        _.each(result.messages, (msg: any) => {
+          const item = new Message();
+          item.when = moment(msg.created).format('LTS');
+          item.message = msg.text;
+          item.who = msg.from === 'ngx-demo-chat' ? 'me' : 'partner';
+          this.activeBot.messages.push(item);
+        });
+      }).subscribe();
 
-      this.newMessage = '';
-    }
   }
 
   clearMessages(activeChat) {

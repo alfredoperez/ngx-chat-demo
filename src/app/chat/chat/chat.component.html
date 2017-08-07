@@ -15,7 +15,7 @@
             </div>
           </md-toolbar>
 
-          <app-contacts [chats]="chats" (onActiveChanged)="setActiveChat($event)"></app-contacts>
+          <app-contacts [chats]="bots" (onActiveChanged)="setActiveChat($event)"></app-contacts>
 
         </div>
       </md-sidenav>
@@ -28,10 +28,10 @@
             </button>
 
             <div class="current-contact" fxLayout="row" fxLayoutAlign="start center">
-              <img class="avatar pointer" [src]="activeChat.picture">
+              <img class="avatar pointer" [src]="activeBot.picture">
 
               <div fxLayout="column">
-                <span class="name">{{ activeChat.name }}</span>
+                <span class="name">{{ activeBot.name }}</span>
                 <span class="status">Online</span>
               </div>
             </div>
@@ -52,11 +52,11 @@
 
           <perfect-scrollbar #chatScroll>
             <div class="messages-container">
-              <div class="chat-message" *ngFor="let message of chats[0].messages" [ngSwitch]="message.who"
+              <div class="chat-message" *ngFor="let message of activeBot.messages" [ngSwitch]="message.who"
                    fxLayout="column" fxLayoutAlign="end start">
-                <div class="partner" *ngSwitchCase="'partner'" fxFlexAlign="start" fxLayout="row"
-                     fxLayoutAlign="start start">
-                  <img class="avatar" [src]="activeChat.picture">
+                <div class="partner" *ngSwitchCase="'partner'"
+                     fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start start">
+                  <img class="avatar" [src]="activeBot.picture">
                   <span class="message mat-elevation-z1">{{ message.message }}</span>
                 </div>
                 <div class="me" *ngSwitchCase="'me'" fxFlexAlign="end" fxLayout="row" fxLayoutAlign="end start">
@@ -70,8 +70,10 @@
 
           <div class="chat-respond" fxLayout="row" fxLayoutAlign="start center">
             <md-input-container fxFlex>
-              <textarea mdInput (keyup.enter)="send()" [(ngModel)]="newMessage"
-                        placeholder="Type and hit enter to send your message"></textarea>
+              <textarea mdInput (keyup.enter)="send()"
+                        [(ngModel)]="newMessage">
+
+              </textarea>
             </md-input-container>
             <button (click)="send()" md-fab color="primary">
               <md-icon>send</md-icon>
@@ -115,7 +117,7 @@
     <span> Mute Chat </span>
   </button>
   <md-divider></md-divider>
-  <button md-menu-item (click)="clearMessages(activeChat)">
+  <button md-menu-item (click)="clearMessages(activeBot)">
     <md-icon> clear_all</md-icon>
     <span> Clear Messages </span>
   </button>

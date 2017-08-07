@@ -1,7 +1,8 @@
 <div class="chat-contacts-container" fxLayout="column">
   <perfect-scrollbar>
     <md-nav-list class="chat-contacts">
-      <md-list-item class="chat-contact" (click)="setActive(chat)" *ngFor="let chat of chats" md-ripple>
+      <md-list-item class="chat-contact" *ngFor="let chat of chats"
+                    (click)="setActive(chat)" md-ripple>
         <img [src]="chat.picture" md-list-avatar>
         <h3 class="name" md-line>{{chat.name}}</h3>
         <p class="last-message" md-line> {{chat.lastMessage}}</p>

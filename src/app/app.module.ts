@@ -4,10 +4,10 @@ import { NgModule } from '@angular/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { routing } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PerfectScrollbarModule, PerfectScrollbarConfigInterface } from 'angular2-perfect-scrollbar';
 import { SharedModule } from './shared/shared.module';
 import { MdIconRegistry } from '@angular/material';
 import { CoreModule } from './core/core.module';
+import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 
 const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
