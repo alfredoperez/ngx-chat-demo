@@ -3,87 +3,95 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Ngx Starter</title>
+  <title>Bots Demo</title>
   <base href="/">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-
   <meta name="theme-color" content="#808080">
   <link rel="manifest" href="/manifest.json">
-
 </head>
 
 <body>
 
-<app-root></app-root>
-<div class="loader"></div>
-<style>
-  .loader,
-  .loader:before,
-  .loader:after {
-    border-radius: 50%;
-    width: 2.5em;
-    height: 2.5em;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation: load7 1.8s infinite ease-in-out;
-    animation: load7 1.8s infinite ease-in-out;
-  }
+<app-root>
 
-  .loader {
-    color: #ffffff;
-    font-size: 10px;
-    margin: 80px auto;
-    position: relative;
-    text-indent: -9999em;
-    -webkit-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-animation-delay: -0.16s;
-    animation-delay: -0.16s;
-  }
-
-  .loader:before,
-  .loader:after {
-    content: '';
-    position: absolute;
-    top: 0;
-  }
-
-  .loader:before {
-    left: -3.5em;
-    -webkit-animation-delay: -0.32s;
-    animation-delay: -0.32s;
-  }
-
-  .loader:after {
-    left: 3.5em;
-  }
-
-  @-webkit-keyframes load7 {
-    0%,
-    80%,
-    100% {
-      box-shadow: 0 2.5em 0 -1.3em;
+  <style>
+    .loader {
+      color: #ffffff;
+      font-size: 20px;
+      margin: 100px auto;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      position: relative;
+      text-indent: -9999em;
+      -webkit-animation: load4 1.3s infinite linear;
+      animation: load4 1.3s infinite linear;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
     }
-    40% {
-      box-shadow: 0 2.5em 0 0;
-    }
-  }
 
-  @keyframes load7 {
-    0%,
-    80%,
-    100% {
-      box-shadow: 0 2.5em 0 -1.3em;
+    @-webkit-keyframes load4 {
+      0%,
+      100% {
+        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+      }
+      12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+      }
+      25% {
+        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+      }
+      37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+      }
+      50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+      }
+      62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+      }
+      75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+      }
+      87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+      }
     }
-    40% {
-      box-shadow: 0 2.5em 0 0;
-    }
-  }
 
-</style>
+    @keyframes load4 {
+      0%,
+      100% {
+        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+      }
+      12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+      }
+      25% {
+        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+      }
+      37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+      }
+      50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+      }
+      62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+      }
+      75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+      }
+      87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+      }
+    }
+  </style>
+  <div class="loader">Loading...</div>
+
+</app-root>
+
 </body>
 
 </html>

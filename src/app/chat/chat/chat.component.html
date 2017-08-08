@@ -58,6 +58,7 @@
                      fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start start">
                   <img class="avatar" [src]="activeBot.picture">
                   <span class="message mat-elevation-z1">{{ message.message }}</span>
+                  <div #adaptiveCard></div>
                 </div>
                 <div class="me" *ngSwitchCase="'me'" fxFlexAlign="end" fxLayout="row" fxLayoutAlign="end start">
                   <span class="message mat-elevation-z1">{{ message.message }}</span>
@@ -66,7 +67,6 @@
               </div>
             </div>
           </perfect-scrollbar>
-
 
           <div class="chat-respond" fxLayout="row" fxLayoutAlign="start center">
             <md-input-container fxFlex>

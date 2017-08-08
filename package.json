@@ -34,6 +34,7 @@
     "@angular/service-worker": "^1.0.0-beta.15",
     "core-js": "^2.4.1",
     "material-design-icons": "^3.0.1",
+    "microsoft-adaptivecards": "^0.6.0",
     "moment": "^2.18.1",
     "ng-pwa-tools": "0.0.15",
     "ngx-perfect-scrollbar": "^4.5.3",

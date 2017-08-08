@@ -23,6 +23,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
   componentScroll: PerfectScrollbarComponent;
   @ViewChild(MdInputDirective)
   input;
+
+  @ViewChild('adaptiveCard')
+  adaptiveCard;
   messages$: Observable<any>;
 
   constructor(private botService: BotFrameworkService) {
@@ -55,6 +58,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
         name: 'QnA Bot',
         picture: 'assets/img/avatars/2.png',
         apiKey: 'mfibrSyD9Rg.cwA.84g.5GNhdsXzIBD9OEjmjBFo76K2TFftBRH9qnqrvImGYIY', messages: []
+      } as Bot,
+      {
+        name: 'Quote Bot(Luis)',
+        picture: 'assets/img/avatars/6.png',
+        apiKey: 'r2_eoVPtrNI.cwA.gzc.7ax_Wvx70lanile7IAq5P69Rl9vF6rylTd8v3r0iF2w', messages: []
       } as Bot
 
     ];

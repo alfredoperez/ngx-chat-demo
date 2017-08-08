@@ -42,10 +42,10 @@
     </button>
   </md-menu>
 </md-toolbar>
-<div class="content-container" fxLayout="column">
-  <div class="main-container" #scrollContainer>
-    <router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>
-  </div>
+
+<div class="main-container" #scrollContainer>
+  <router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>
 </div>
+
 
 
