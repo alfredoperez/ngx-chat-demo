@@ -8,13 +8,15 @@ import { SharedModule } from './shared/shared.module';
 import { MdIconRegistry } from '@angular/material';
 import { CoreModule } from './core/core.module';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { EmbeddedComponent } from './embedded/embedded.component';
 
 
 const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {};
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmbeddedComponent
   ],
   imports: [
     // Angular

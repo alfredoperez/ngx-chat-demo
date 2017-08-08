@@ -3,6 +3,13 @@
   <button md-button class="logo-button">
     Microsoft Bot Framework Demo
   </button>
+  <button [routerLink]="['/chat']" md-button>
+    <span> Custom</span>
+  </button>
+
+  <button [routerLink]="['/embedded']" md-button>
+    <span> Embedded</span>
+  </button>
   <span fxFlex></span>
 
   <button class="user-button" md-button [mdMenuTriggerFor]="menu">

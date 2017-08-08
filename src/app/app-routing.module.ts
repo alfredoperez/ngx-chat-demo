@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { EmbeddedComponent } from './embedded/embedded.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,11 @@ const routes: Routes = [
   {
     path: 'chat',
     loadChildren: 'app/chat/chat.module#ChatModule'
+  },
+  {
+    path: 'embedded',
+    component:EmbeddedComponent
+
   },
 
 ];
