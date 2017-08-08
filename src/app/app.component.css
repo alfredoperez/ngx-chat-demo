@@ -1,0 +1,37 @@
+@keyframes fadein {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@keyframes fadeout {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+.main-toolbar {
+  background: #ffffff;
+  position: relative;
+  overflow-x: hidden;
+  z-index: 4;
+  padding-right: 0; }
+  .main-toolbar .user-button {
+    height: 100%;
+    border-radius: 0; }
+    .main-toolbar .user-button md-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px; }
+  .main-toolbar .logo-button {
+    height: 100%;
+    border-radius: 0; }
+
+.content-container {
+  height: 100%; }
+
+.main-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100% - 64px);
+  position: relative; }
+
+/*# sourceMappingURL=app.component.css.map */

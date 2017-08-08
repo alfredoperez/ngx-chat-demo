@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ContactsComponent } from './contacts/contacts.component';
 import { FormsModule } from '@angular/forms';
 import { MdListModule } from '@angular/material';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 const COMPONENTS = [
   ChatComponent,
@@ -25,6 +26,7 @@ const ROUTES: Routes = [
     FormsModule,
     MdListModule,
     SharedModule,
+    PerfectScrollbarModule,
     RouterModule.forChild(ROUTES)
   ],
   declarations: [...COMPONENTS]

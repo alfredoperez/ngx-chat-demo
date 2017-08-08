@@ -1,20 +1,28 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { BotFrameworkService } from '../../core/data/services/bot-framework.service';
 import { Bot, Message } from '../../core/data/models/bot.model';
 import { Observable } from 'rxjs/Observable';
+import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
+import { MdInputDirective } from '@angular/material';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css'],
+  styleUrls: ['./chat.component.css']
+
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterViewInit {
 
   bots: Bot[];
   activeBot: Bot;
   newMessage: string;
+  isSendingMessage = false;
+  @ViewChild(PerfectScrollbarComponent)
+  componentScroll: PerfectScrollbarComponent;
+  @ViewChild(MdInputDirective)
+  input;
   messages$: Observable<any>;
 
   constructor(private botService: BotFrameworkService) {
@@ -25,6 +33,10 @@ export class ChatComponent implements OnInit {
     this.activeBot = this.bots[0];
 
     this.initializeConversation();
+  }
+
+  ngAfterViewInit() {
+    //   this.input.focus();
   }
 
   initializeConversation() {
@@ -54,6 +66,7 @@ export class ChatComponent implements OnInit {
   }
 
   send() {
+    this.isSendingMessage = true;
     this.botService.postMessage(this.newMessage, this.activeBot)
       .subscribe(() => {
         this.newMessage = '';
@@ -67,6 +80,11 @@ export class ChatComponent implements OnInit {
               item.who = msg.from === 'ngx-demo-chat' ? 'me' : 'partner';
               this.activeBot.messages.push(item);
             });
+            this.isSendingMessage = false;
+            this.componentScroll.directiveRef.scrollToBottom();
+            setTimeout(() => {
+              this.input.focus();
+            }, 30);
           }).subscribe();
       });
 

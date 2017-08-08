@@ -18,7 +18,7 @@ $height__chat-container: calc(100% - #{$height__chat-header - $height__chat-tool
 .chat-container {
   height: $height__chat-container;
   position: relative;
-  min-height: 1000px;
+
   max-width: 1200px;
   margin: -$height__chat-toolbar auto 0;
   padding: 0 32px 64px;
@@ -65,6 +65,7 @@ $height__chat-container: calc(100% - #{$height__chat-header - $height__chat-tool
 
         perfect-scrollbar {
           margin-bottom: 103px;
+          height: calc(100% - #{$height__chat-toolbar + 1} - 55px);
         }
 
         .messages-container {

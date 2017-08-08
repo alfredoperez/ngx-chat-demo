@@ -50,7 +50,7 @@
 
         <div class="chat-content" fxLayout="column" fxLayoutAlign="end stretch">
 
-          <perfect-scrollbar #chatScroll>
+          <perfect-scrollbar>
             <div class="messages-container">
               <div class="chat-message" *ngFor="let message of activeBot.messages" [ngSwitch]="message.who"
                    fxLayout="column" fxLayoutAlign="end start">
@@ -70,10 +70,12 @@
 
           <div class="chat-respond" fxLayout="row" fxLayoutAlign="start center">
             <md-input-container fxFlex>
-              <input mdInput (keyup.enter)="send()"
+              <input [disabled]="isSendingMessage"
+                     mdInput #input
+                     (keyup.enter)="send()"
                      [(ngModel)]="newMessage"/>
             </md-input-container>
-            <button (click)="send()" md-fab color="primary">
+            <button [disabled]="isSendingMessage" (click)="send()" md-fab color="primary">
               <md-icon>send</md-icon>
             </button>
           </div>

@@ -10,9 +10,7 @@ import { CoreModule } from './core/core.module';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 
-const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
+const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {};
 
 @NgModule({
   declarations: [
