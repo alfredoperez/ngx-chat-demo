@@ -1,12 +1,12 @@
 {
-    "name": "ngx-starter",
+    "name": "ngx-chat-demo",
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
         "start:pwa": "npm run build && cd dist && http-server",
-        "build": "ng build --prod && ngu-app-shell",
+        "build": "ng build --prod && npm run ngu-app-shell",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
